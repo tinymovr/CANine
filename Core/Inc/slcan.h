@@ -8,6 +8,6 @@ int8_t slcan_parse_str(uint8_t *buf, uint8_t len);
 #define SLCAN_MTU 30 // (sizeof("T1111222281122334455667788EA5F\r")+1)
 
 #define SLCAN_STD_ID_LEN_BYTES 2
-#define SLCAN_EXT_ID_LEN 8
+#define SLCAN_EXT_ID_LEN_BYTES 4
 
 #endif // _SLCAN_H

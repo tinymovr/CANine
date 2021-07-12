@@ -15,12 +15,8 @@
 // Parse an incoming CAN frame into an outgoing slcan message
 int8_t slcan_parse_frame(uint8_t *buf, CAN_RxHeaderTypeDef *frame_header, uint8_t* frame_data)
 {
+	memset (buf, '\0', SLCAN_MTU);
     uint8_t msg_position = 0;
-
-    for (uint8_t j=0; j < SLCAN_MTU; j++)
-    {
-        buf[j] = '\0';
-    }
 
 	// Packet header
 	// Just the number of packets remaining for now,
@@ -30,34 +26,45 @@ int8_t slcan_parse_frame(uint8_t *buf, CAN_RxHeaderTypeDef *frame_header, uint8_
     // Add character for frame type
     if (frame_header->RTR == CAN_RTR_DATA)
     {
-        buf[msg_position] = 't';
-    } else if (frame_header->RTR == CAN_RTR_REMOTE) {
-        buf[msg_position] = 'r';
-    }
-
-    // Assume standard identifier
-    uint8_t id_len = SLCAN_STD_ID_LEN_BYTES;
-    uint32_t can_id = frame_header->StdId;
-
-    // Check if extended
-    if (frame_header->IDE == CAN_ID_EXT)
+    	if (frame_header->IDE == CAN_ID_EXT)
+    	{
+    		buf[msg_position] = 'T';
+    	}
+    	else
+    	{
+    		buf[msg_position] = 't';
+    	}
+    } else if (frame_header->RTR == CAN_RTR_REMOTE)
     {
-        // Convert first char to upper case for extended frame
-        buf[msg_position] -= 32;
-        id_len = SLCAN_EXT_ID_LEN;
-        can_id = frame_header->ExtId;
+    	if (frame_header->IDE == CAN_ID_EXT)
+		{
+			buf[msg_position] = 'R';
+		}
+		else
+		{
+			buf[msg_position] = 'r';
+		}
     }
     msg_position++;
 
-    // Add ID to buffer
-    memcpy(buf+msg_position, can_id, sizeof(uint8_t) * id_len);
-    msg_position += sizeof(uint8_t) * id_len;
+    // Add frame ID
+    if (frame_header->IDE == CAN_ID_EXT)
+    {
+		memcpy(buf+msg_position, &(frame_header->ExtId), SLCAN_EXT_ID_LEN_BYTES);
+		msg_position += SLCAN_EXT_ID_LEN_BYTES;
+    }
+    else
+    {
+		memcpy(buf+msg_position, &(frame_header->StdId), SLCAN_STD_ID_LEN_BYTES);
+		msg_position += SLCAN_STD_ID_LEN_BYTES;
+    }
 
-    // Add DLC to buffer
+    // Add frame DLC
     buf[msg_position++] = frame_header->DLC;
 
     // Add data bytes
     memcpy(buf+msg_position, frame_data, sizeof(uint8_t) * frame_header->DLC);
+    msg_position += sizeof(uint8_t) * frame_header->DLC;
 
     // Return number of bytes in string
     return msg_position;
@@ -164,8 +171,8 @@ int8_t slcan_parse_str(uint8_t *buf, uint8_t len)
 
     // Save CAN ID depending on ID type
     if (frame_header.IDE == CAN_ID_EXT) {
-    	memcpy(&(frame_header.ExtId), buf+msg_position, sizeof(uint8_t)*SLCAN_EXT_ID_LEN);
-    	msg_position += SLCAN_EXT_ID_LEN;
+    	memcpy(&(frame_header.ExtId), buf+msg_position, sizeof(uint8_t)*SLCAN_EXT_ID_LEN_BYTES);
+    	msg_position += SLCAN_EXT_ID_LEN_BYTES;
     }
     else {
     	memcpy(&(frame_header.StdId), buf+msg_position, sizeof(uint8_t)*SLCAN_STD_ID_LEN_BYTES);

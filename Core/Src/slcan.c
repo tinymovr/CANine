@@ -106,7 +106,7 @@ int8_t slcan_parse_str(uint8_t *buf, uint8_t len)
 			// Set bitrate command
 
 			// Check for valid bitrate
-			br = buf[1];
+			br = buf[2];
 			if(br >= CAN_BITRATE_INVALID)
 			{
 				return -1;
@@ -118,7 +118,7 @@ int8_t slcan_parse_str(uint8_t *buf, uint8_t len)
 		case 'm':
 		case 'M':
 			// Set mode command
-			if (buf[1] == 1)
+			if (buf[2] == 1)
 			{
 				// Mode 1: silent
 				can_set_silent(1);
@@ -131,7 +131,7 @@ int8_t slcan_parse_str(uint8_t *buf, uint8_t len)
 		case 'a':
 		case 'A':
 			// Set autoretry command
-			if (buf[1] == 1)
+			if (buf[2] == 1)
 			{
 				// Mode 1: autoretry enabled (default)
 				can_set_autoretransmit(1);

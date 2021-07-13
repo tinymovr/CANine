@@ -89,7 +89,6 @@ int8_t slcan_parse_str(uint8_t *buf, uint8_t len)
     }
 
     // Process command
-    volatile uint8_t br;
     switch(buf[msg_position])
     {
 		case 'O':
@@ -106,8 +105,7 @@ int8_t slcan_parse_str(uint8_t *buf, uint8_t len)
 			// Set bitrate command
 
 			// Check for valid bitrate
-			br = buf[2];
-			if(br >= CAN_BITRATE_INVALID)
+			if(buf[2] >= CAN_BITRATE_INVALID)
 			{
 				return -1;
 			}

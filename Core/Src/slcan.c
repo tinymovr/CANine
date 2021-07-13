@@ -110,7 +110,7 @@ int8_t slcan_parse_str(uint8_t *buf, uint8_t len)
 				return -1;
 			}
 
-			can_set_bitrate(br);
+			can_set_bitrate(buf[2]);
 			return 0;
 
 		case 'm':

@@ -8,9 +8,6 @@
 #include "slcan.h"
 #include "usbd_cdc_if.h"
 
-#define GIT_VERSION "fw-v0.8.9-1-ge21ec71-dirty"
-#define GIT_REMOTE "rem"
-
 
 // Parse an incoming CAN frame into an outgoing slcan message
 int8_t slcan_parse_frame(uint8_t *buf, CAN_RxHeaderTypeDef *frame_header, uint8_t* frame_data)
@@ -142,7 +139,7 @@ int8_t slcan_parse_str(uint8_t *buf, uint8_t len)
 		case 'V':
 		{
 			// Report firmware version and remote
-			char* fw_id = GIT_VERSION " " GIT_REMOTE "\r";
+			char* fw_id = GIT_VERSION " " GIT_REMOTE;
 			CDC_Transmit_FS((uint8_t*)fw_id, strlen(fw_id));
 			return 0;
 		}

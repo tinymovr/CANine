@@ -1,0 +1,3 @@
+# Get git version and dirty flag
+GIT_VERSION:='"$(shell git describe --abbrev=7 --dirty --always --tags)"'
+GIT_REMOTE:='"$(shell git config --get remote.origin.url)"'

@@ -233,9 +233,9 @@
                                     									
                                     <listOptionValue builtIn="false" value="STM32F042x6"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;GIT_VERSION=${GIT_VERSION}&quot;"/>
+                                    <listOptionValue builtIn="false" value="GIT_VERSION=&quot;$(GIT_VERSION)&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="GIT_REMOTE=$(GIT_REMOTE)"/>
+                                    <listOptionValue builtIn="false" value="GIT_REMOTE=&quot;$(GIT_REMOTE)&quot;"/>
                                     								
                                 </option>
                                 								

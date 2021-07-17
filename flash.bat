@@ -1,10 +1,10 @@
 @echo off
 setlocal
 
-rem This script will update your CANine adapter
-rem to the latest CANine fimware. Ensure your
-rem device is plugged in and in DFU mode (boot
-rem jumper to on).
+echo This script will update your CANine adapter
+echo to the latest CANine fimware. Ensure your
+echo device is plugged in and in DFU mode (boot
+echo jumper to on).
 
 :PROMPT
 SET /P CONTINUE=Continue? (Y/[N])
@@ -12,16 +12,16 @@ IF /I "%CONTINUE%" NEQ "Y" GOTO END
 
 
 if exist dfu-util-static.exe (
-    rem DFU-util exists, skipping download
+    echo DFU-util exists, skipping download
 ) else (
-    rem Downloading DFU-util
+    echo Downloading DFU-util
     curl.exe -O -J -L --output dfu-util-static.exe --url https://github.com/yconst/CANine/releases/latest/download/dfu-util-static.exe)
 )
 
 if exist CANine.bin (
-    rem Firmware exists, skipping download
+    echo Firmware exists, skipping download
 ) else (
-    rem Downloading firmware
+    echo Downloading firmware
     curl.exe -O -J -L --output CANine.bin --url https://github.com/yconst/CANine/releases/latest/download/CANine.bin)
 )
 

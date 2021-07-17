@@ -1,9 +1,11 @@
 
 # CANine firmware
 
-USB CDC firmware for the CANine adapter. This firmware is based on slcan but gets rid of the Virtual Com Port cruft, resulting in leaner communication on all platforms, and especially on Windows. Most slcan commands are the same, but the CAN frame size is fixed and data is transmitted as binary (instead if ascii in slcan).
+USB CDC firmware for the CANine USB⟷CAN Bus adapter. This firmware is based on slcan but gets rid of the Virtual Com Port cruft, resulting in leaner communication on all platforms, and especially on Windows. Most slcan commands are the same, but the CAN frame size is fixed and data is transmitted as binary (instead of ascii in slcan).
 
 This firmware is currently supported by [Tinymovr Studio](https://pypi.org/project/tinymovr/) v0.4.0 and above.
+
+This firmware should be compatible with CANable adapters, but has not been tested.
 
 ## Flashing
 

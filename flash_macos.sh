@@ -14,7 +14,7 @@ read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
     brew install dfu-util
     if [ ! -f "$FILE" ]; then
-        curl -O -J -L --output ./CANine.bin --url https://github.com/yconst/CANine/releases/latest/CANine.bin
+        curl -O -J -L --output ./CANine.bin --url https://github.com/yconst/CANine/releases/latest/download/CANine.bin
     fi
 
     if dfu-util -c 1 -i 0 -a 0 -s 0x08000000 -D ./CANine.bin; then

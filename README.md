@@ -28,6 +28,6 @@ A bash script is provided, which you can download and run using the command belo
 
 ### Macos
 
-Similarly to linux, use the command below:
+You'll need to have Homebrew installed. Once Homebrew is installed, use the command below:
 
     wget https://raw.githubusercontent.com/yconst/CANine/main/flash.sh && chmod +x ./flash.sh && sudo ./flash.sh

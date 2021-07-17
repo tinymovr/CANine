@@ -1,10 +1,14 @@
 @echo off
 setlocal
 
+echo.
+echo CANine Updater
+echo --------------
 echo This script will update your CANine adapter
 echo to the latest CANine fimware. Ensure your
 echo device is plugged in and in DFU mode (boot
 echo jumper to on).
+echo.
 
 :PROMPT
 SET /P CONTINUE=Continue? (Y/[N])

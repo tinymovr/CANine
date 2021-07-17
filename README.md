@@ -18,16 +18,16 @@ For windows you will need to install the libusb driver. The easiest way to do th
 
 Once you have the libusb driver installed, run the command below:
 
-    wget https://raw.githubusercontent.com/yconst/CANine/main/flash.bat & flash.bat
+    wget -q https://raw.githubusercontent.com/yconst/CANine/main/flash.bat & flash.bat
 
 ### Linux
 
 A bash script is provided, which you can download and run using the command below:
 
-    wget https://raw.githubusercontent.com/yconst/CANine/main/flash.sh && chmod +x ./flash.sh && sudo ./flash.sh
+    wget -q https://raw.githubusercontent.com/yconst/CANine/main/flash.sh && chmod +x ./flash.sh && sudo ./flash.sh
 
 ### Macos
 
 You'll need to have Homebrew installed. Once Homebrew is installed, use the command below:
 
-    wget https://raw.githubusercontent.com/yconst/CANine/main/flash_macos.sh && chmod +x ./flash_macos.sh && ./flash_macos.sh
+    wget -q https://raw.githubusercontent.com/yconst/CANine/main/flash_macos.sh && chmod +x ./flash_macos.sh && ./flash_macos.sh

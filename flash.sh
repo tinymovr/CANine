@@ -19,6 +19,8 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
 
     if dfu-util -c 1 -i 0 -a 0 -s 0x08000000 -D ./CANine.bin; then
         echo "Done. Disconnect device and return BOOT jumper to off."
+    else
+        echo "DFU operation failed."
     fi
 else
     echo "Aborting"

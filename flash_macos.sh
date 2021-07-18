@@ -17,7 +17,7 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
         curl -O -J -L --output ./CANine.bin --url https://github.com/yconst/CANine/releases/latest/download/CANine.bin
     fi
 
-    if dfu-util -c 1 -i 0 -a 0 -s 0x08000000 -D ./CANine.bin; then
+    if dfu-util -d 0x0483:0xdf11 -c 1 -i 0 -a 0 -s 0x08000000 -D ./CANine.bin; then
         echo "Done. Disconnect device and return BOOT jumper to off."
     else
         echo "DFU operation failed."

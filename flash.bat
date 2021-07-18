@@ -29,7 +29,7 @@ if exist CANine.bin (
     curl.exe -O -J -L --output CANine.bin --url https://github.com/yconst/CANine/releases/latest/download/CANine.bin)
 )
 
-dfu-util-static.exe -c 1 -i 0 -a 0 -s 0x08000000 -D CANine.bin
+dfu-util-static.exe -d 0x0483:0xdf11 -c 1 -i 0 -a 0 -s 0x08000000 -D CANine.bin
 
 :END
 endlocal

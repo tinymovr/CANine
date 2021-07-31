@@ -7,6 +7,8 @@ This firmware is currently supported by [Tinymovr Studio](https://pypi.org/proje
 
 This firmware should be compatible with CANable adapters, but has not been tested.
 
+[Documentation](https://canine.readthedocs.io/en/latest/)
+
 ## Flashing
 
 1. Ensure your device is not plugged in

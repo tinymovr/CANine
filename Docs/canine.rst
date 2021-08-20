@@ -47,7 +47,7 @@ Windows
 
 For windows you will need to install the libusb driver. The easiest way to do this is using the Zadig utility. Download and run the utility and choose the device from the drop-down list. The device should read ST Microelectronics CDC, and should have vendor id 0x0483 and device id 0xdf11. Choose "libusb" as the replacement driver and hit "replace".
 
-Once you have the libusb driver installed, run the command below:
+Once you have the libusb driver installed, launch `cmd.exe` and type in the command below:
 
 .. code-block:: console
 

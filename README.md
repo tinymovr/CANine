@@ -35,3 +35,10 @@ A bash script is provided, which you can download and run using the command belo
 You'll need to have Homebrew installed. Once Homebrew is installed, use the command below:
 
     wget -q https://raw.githubusercontent.com/yconst/CANine/main/flash_macos.sh && chmod +x ./flash_macos.sh && ./flash_macos.sh
+    
+
+## Using
+
+Currently this firmware is supported by our [fork of the python-can library](https://github.com/tinymovr/python-can) (the `develop` branch). It's not yet tested on Linux (Windows and Macos works), but it should work without an issue. 
+
+You can set `--bustype=canine` for Tinymovr studio to use this protocol. If you pip install studio from the [main branch](https://github.com/tinymovr/Tinymovr), you'll get the forked python-can library installed automatically.

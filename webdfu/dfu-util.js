@@ -74,6 +74,31 @@ var device = null;
         }
     }
 
+    function makeRequest (method, url) {
+        return new Promise(function (resolve, reject) {
+          var xhr = new XMLHttpRequest();
+          xhr.open(method, url);
+          xhr.responseType = "arraybuffer";
+          xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              resolve(xhr.response);
+            } else {
+              reject({
+                status: xhr.status,
+                statusText: xhr.statusText
+              });
+            }
+          };
+          xhr.onerror = function () {
+            reject({
+              status: xhr.status,
+              statusText: xhr.statusText
+            });
+          };
+          xhr.send();
+        });
+      }
+
     function getDFUDescriptorProperties(device) {
         // Attempt to read the DFU functional descriptor
         // TODO: read the selected configuration's descriptor
@@ -184,7 +209,7 @@ var device = null;
 
         let transferSize = 1024;
 
-        let firmwareFile = "/builds/canine-firmware/canine-000.bin";
+        let firmwareURL = "https://github.com/tinymovr/CANine/releases/latest/download/CANine.bin";
 
         let downloadLog = document.querySelector("#downloadLog");
         let uploadLog = document.querySelector("#uploadLog");
@@ -340,6 +365,14 @@ var device = null;
                 });
             }
 
+            await makeRequest('GET', firmwareURL)
+                .then(function (data) {
+                    firmwareFile = data;
+                })
+                .catch(function (err) {
+                    console.error('Augh, there was an error!', err.statusText);
+                });
+
             if (device && firmwareFile != null) {
                 setLogContext(downloadLog);
                 clearLog(downloadLog);
@@ -377,35 +410,6 @@ var device = null;
 
             connectButton.disabled = false;
         });
-
-        // detachButton.addEventListener('click', function() {
-        //     if (device) {
-        //         device.detach().then(
-        //             async len => {
-        //                 let detached = false;
-        //                 try {
-        //                     await device.close();
-        //                     await device.waitDisconnected(5000);
-        //                     detached = true;
-        //                 } catch (err) {
-        //                     console.log("Detach failed: " + err);
-        //                 }
-
-        //                 onDisconnect();
-        //                 device = null;
-        //                 if (detached) {
-        //                     // Wait a few seconds and try reconnecting
-        //                     setTimeout(autoConnect, 5000);
-        //                 }
-        //             },
-        //             async error => {
-        //                 await device.close();
-        //                 onDisconnect(error);
-        //                 device = null;
-        //             }
-        //         );
-        //     }
-        // });
 
         // Check if WebUSB is available
         if (typeof navigator.usb !== 'undefined') {

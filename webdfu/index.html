@@ -1,57 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../style.css" />
-  <title>WebUSB DFU</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  <title>WebUSB DFU</title>
   <script src="dfu.js"></script>
   <script src="dfuse.js"></script>
   <script src="FileSaver.js"></script>
   <script src="dfu-util.js"></script>
+  <meta charset="utf-8">
 </head>
 
 <body>
-  <!--<a href="https://github.com/tinymovr/CANine"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>-->
-  <header class="page-header">
-    <img class="logo-image" src="/logo.png" alt="Tinymovr logo image">
-    <h1>CANine Updater</h1>
-  </header>
 
-  <main>
-    <section>
-      <p>Upgrade your CANine firmware to the latest version</p>
-      <ul>
-        <li>Unplug your CANine if plugged in</li>
-        <li>Move the BOOT switch to the ON position</li>
-        <li>Plug your CANine in</li>
-        <li>Press "Connect and Update" below</li>
-        <li>Wait for flashing to finish, then unplug your CANine</li>
-        <li>Unplug your CANine</li>
-        <li>Move the BOOT switch to the original position</li>
-    </ul>
-    </section>
-
-    <p>
-      <button id="connect">Connect & Update</button>
-    </p>
-    <p>
-      <div id="status" style="white-space: pre">status</div>
-      <div id="usbInfo" style="white-space: pre">usbinfo</div>
-      <div id="dfuInfo" style="white-space: pre">dfuinfo</div>
-    </p>
-
-    <!-- <section>
-      <h2>Troubleshooting</h2>
-      <ul>
-        <li>Nothing showing up in the Chrome connection window on Windows? Run <a href="https://canable.io/utilities/ImpulseRC_Driver_Fixer.exe">this utility</a> to fix your drivers.</li>
-        <li>Nothing showing up on Linux? You likely need to <a href="udev.html">add a udev rule</a> or run Chrome as root</li>
+  <div class="col-lg-8 mx-auto p-4 py-md-5">
+    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <img src="logo.png" class="me-2" width="80" height="80" alt="Logo"/>
+        <span class="fs-4">CANine Updater</span>
+      </a>
+    </header>
+  
+    <main>
+      <h1>Upgrade your CANine</h1>
+      <p class="fs-5 col-md-8">Follow the steps below to easily upgrade the firmware on your CANine Adapter:</p>
+      <ul class="list-group list-group-numbered">
+        <li class="list-group-item">Unplug your CANine if plugged in</li>
+        <li class="list-group-item">Move the BOOT switch to the ON position</li>
+        <li class="list-group-item">Plug your CANine in</li>
+        <li class="list-group-item">Press "Connect and Update" below</li>
+        <li class="list-group-item">Wait for flashing to finish, then unplug your CANine</li>
+        <li class="list-group-item">Unplug your CANine</li>
+        <li class="list-group-item">Move the BOOT switch to the original position</li>
       </ul>
-    </section> -->
-  </main>
 
-  <footer>
-    Powered by Devan Lai's <a href="https://github.com/devanlai/webdfu">webdfu</a>
-  </footer>
+      <hr class="col-3 col-md-2 mb-5">
+      
+      <div class="mb-5">
+        <a id="connect" class="btn btn-primary btn-lg px-4">Connect & Update</a>
+      </div>
+
+      <div class="row ">
+          <div id="status" ></div>
+          <div id="usbInfo" ></div>
+          <div id="dfuInfo" ></div>
+      </div>
+
+      <hr class="col-3 col-md-2 mb-5">
+  
+      
+    </main>
+    <footer class="pt-5 my-5 text-muted border-top">
+      Made with bootstrap · Powered by Devan Lai's <a href="https://github.com/devanlai/webdfu">webdfu</a> · © Tinymovr 2022
+    </footer>
+  </div>
 </body>
 
 </html>

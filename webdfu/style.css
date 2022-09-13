@@ -1,0 +1,14 @@
+
+p.warning {
+    color: red;
+}
+p.error {
+    color: red;
+    font-weight: bold;
+}
+label.radio {
+    display: inline;
+}
+input:invalid {
+    color:red;
+}

@@ -209,7 +209,8 @@ var device = null;
 
         let transferSize = 1024;
 
-        let firmwareURL = "https://github.com/tinymovr/CANine/releases/latest/download/CANine.bin";
+        //let firmwareURL = "https://github.com/tinymovr/CANine/releases/latest/download/CANine.bin";
+        let firmwareURL = "CANine.bin";
 
         let downloadLog = document.querySelector("#downloadLog");
         let uploadLog = document.querySelector("#uploadLog");

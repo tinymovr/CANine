@@ -204,13 +204,26 @@ var device = null;
         let infoDisplay = document.querySelector("#usbInfo");
         let dfuDisplay = document.querySelector("#dfuInfo");
 
-        let vid = 0x1;
+        // Hardcode vendor ID to ST
+        let vid = 0;
+        let vidString = "0x0483"
+        try {
+            if (vidString.toLowerCase().startsWith("0x")) {
+                vid = parseInt(vidString, 16);
+            } else {
+                vid = parseInt(vidString, 10);
+            }
+        } catch (error) {
+            console.log("Bad VID " + vidString + ":" + error);
+        }
+
         let serial = ""; // serial number
 
         let transferSize = 1024;
 
         //let firmwareURL = "https://github.com/tinymovr/CANine/releases/latest/download/CANine.bin";
-        let firmwareURL = "CANine.bin";
+        let firmwareURL = "http://localhost:8000/CANine.bin";
+        let firmwareFile = null;
 
         let downloadLog = document.querySelector("#downloadLog");
         let uploadLog = document.querySelector("#uploadLog");

@@ -18,6 +18,7 @@ var device = null;
         return "0x" + s;
     }
 
+
     function niceSize(n) {
         const gigabyte = 1024 * 1024 * 1024;
         const megabyte = 1024 * 1024;
@@ -32,6 +33,7 @@ var device = null;
             return n + "B";
         }
     }
+
 
     function formatDFUSummary(device) {
         const vid = hex4(device.device_.vendorId);
@@ -53,13 +55,29 @@ var device = null;
         return info;
     }
 
+    function formatDFUInterfaceAlternate(settings) {
+        let mode = "Unknown"
+        if (settings.alternate.interfaceProtocol == 0x01) {
+            mode = "Runtime";
+        } else if (settings.alternate.interfaceProtocol == 0x02) {
+            mode = "DFU";
+        }
+
+        const cfg = settings.configuration.configurationValue;
+        const intf = settings["interface"].interfaceNumber;
+        const alt = settings.alternate.alternateSetting;
+        const name = (settings.name) ? settings.name : "UNKNOWN";
+
+        return `${mode}: cfg=${cfg}, intf=${intf}, alt=${alt}, name="${name}"`;
+    }
+
     async function fixInterfaceNames(device_, interfaces) {
         // Check if any interface names were not read correctly
         if (interfaces.some(intf => (intf.name == null))) {
             // Manually retrieve the interface name string descriptors
             let tempDevice = new dfu.Device(device_, interfaces[0]);
             await tempDevice.device_.open();
-            await tempDevice.device_.selectConfiguration(1);
+	    await tempDevice.device_.selectConfiguration(1);
             let mapping = await tempDevice.readInterfaceNames();
             await tempDevice.close();
 
@@ -74,30 +92,33 @@ var device = null;
         }
     }
 
-    function makeRequest (method, url) {
-        return new Promise(function (resolve, reject) {
-          var xhr = new XMLHttpRequest();
-          xhr.open(method, url);
-          xhr.responseType = "arraybuffer";
-          xhr.onload = function () {
-            if (xhr.status >= 200 && xhr.status < 300) {
-              resolve(xhr.response);
-            } else {
-              reject({
-                status: xhr.status,
-                statusText: xhr.statusText
-              });
-            }
-          };
-          xhr.onerror = function () {
-            reject({
-              status: xhr.status,
-              statusText: xhr.statusText
-            });
-          };
-          xhr.send();
-        });
-      }
+    function populateInterfaceList(form, device_, interfaces) {
+        let old_choices = Array.from(form.getElementsByTagName("div"));
+        for (let radio_div of old_choices) {
+            form.removeChild(radio_div);
+        }
+
+        let button = form.getElementsByTagName("button")[0];
+
+        for (let i=0; i < interfaces.length; i++) {
+            let radio = document.createElement("input");
+            radio.type = "radio";
+            radio.name = "interfaceIndex";
+            radio.value = i;
+            radio.id = "interface" + i;
+            radio.required = true;
+
+            let label = document.createElement("label");
+            label.textContent = formatDFUInterfaceAlternate(interfaces[i]);
+            label.className = "radio"
+            label.setAttribute("for", "interface" + i);
+
+            let div = document.createElement("div");
+            div.appendChild(radio);
+            div.appendChild(label);
+            form.insertBefore(div, button);
+        }
+    }
 
     function getDFUDescriptorProperties(device) {
         // Attempt to read the DFU functional descriptor
@@ -200,12 +221,15 @@ var device = null;
 
     document.addEventListener('DOMContentLoaded', event => {
         let connectButton = document.querySelector("#connect");
+        let uploadButton = document.querySelector("#upload");
         let statusDisplay = document.querySelector("#status");
-        let infoDisplay = document.querySelector("#usbInfo");
-        let dfuDisplay = document.querySelector("#dfuInfo");
+
+        let searchParams = new URLSearchParams(window.location.search);
+        let fromLandingPage = false;
 
         // Hardcode vendor ID to ST
         let vid = 0;
+
         let vidString = "0x0483"
         try {
             if (vidString.toLowerCase().startsWith("0x")) {
@@ -213,16 +237,27 @@ var device = null;
             } else {
                 vid = parseInt(vidString, 10);
             }
+            //vidField.value = "0x" + hex4(vid).toUpperCase();
+            fromLandingPage = true;
         } catch (error) {
             console.log("Bad VID " + vidString + ":" + error);
         }
 
-        let serial = ""; // serial number
+        // Grab the serial number from the landing page
+        let serial = "";
+        if (searchParams.has("serial")) {
+            serial = searchParams.get("serial");
+            // Workaround for Chromium issue 339054
+            if (window.location.search.endsWith("/") && serial.endsWith("/")) {
+                serial = serial.substring(0, serial.length-1);
+            }
+            fromLandingPage = true;
+        }
 
-        let transferSize = 1024;
+        let transferSize = 1024; // EMZ changed for STM32G4// 2048;
+        let startAddress = 0x8000000;
+        let maxUploadSize = 0; // overwritten by device.memoryInfo which reads flash size
 
-        //let firmwareURL = "https://github.com/tinymovr/CANine/releases/latest/download/CANine.bin";
-        let firmwareURL = "http://localhost:8000/CANine.bin";
         let firmwareFile = null;
 
         let downloadLog = document.querySelector("#downloadLog");
@@ -234,10 +269,7 @@ var device = null;
             if (reason) {
                 statusDisplay.textContent = reason;
             }
-
-            connectButton.textContent = "Connect";
-            infoDisplay.textContent = "";
-            dfuDisplay.textContent = "";
+            connectButton.textContent = "Connect and Update";
         }
 
         function onUnexpectedDisconnect(event) {
@@ -271,10 +303,22 @@ var device = null;
             if (desc && Object.keys(desc).length > 0) {
                 device.properties = desc;
                 let info = `WillDetach=${desc.WillDetach}, ManifestationTolerant=${desc.ManifestationTolerant}, CanUpload=${desc.CanUpload}, CanDnload=${desc.CanDnload}, TransferSize=${desc.TransferSize}, DetachTimeOut=${desc.DetachTimeOut}, Version=${hex4(desc.DFUVersion)}`;
-                dfuDisplay.textContent += "\n" + info;
-                transferSize = desc.TransferSize;
+		        // EMZ disabled
+                // emz hardcode start address
+                device.startAddress = parseInt(startAddress, 16);
+
                 if (desc.CanDnload) {
                     manifestationTolerant = desc.ManifestationTolerant;
+                }
+
+                if (device.settings.alternate.interfaceProtocol == 0x02) {
+                    if (!desc.CanUpload) {
+                        uploadButton.disabled = true;
+                        dfuseUploadSizeField.disabled = true;
+                    }
+                    if (!desc.CanDnload) {
+                        dnloadButton.disabled = true;
+                    }
                 }
 
                 if (desc.DFUVersion == 0x011a && device.settings.alternate.interfaceProtocol == 0x02) {
@@ -306,7 +350,7 @@ var device = null;
                     }
                 }
             }
-
+            
             // Bind logging methods
             device.logDebug = logDebug;
             device.logInfo = logInfo;
@@ -320,37 +364,158 @@ var device = null;
 
             // Display basic USB information
             statusDisplay.textContent = '';
-            infoDisplay.textContent = (
-                "Name: " + device.device_.productName + "\n" +
-                "MFG: " + device.device_.manufacturerName + "\n" +
-                "Serial: " + device.device_.serialNumber + "\n"
-            );
-
-            // Display basic dfu-util style info
-            dfuDisplay.textContent = formatDFUSummary(device) + "\n" + memorySummary;
+            connectButton.textContent = 'Disconnect';
 
             if (device.memoryInfo) {
-                let dfuseFieldsDiv = document.querySelector("#dfuseFields")
-                dfuseFieldsDiv.hidden = false;
                 let segment = device.getFirstWritableSegment();
                 if (segment) {
                     device.startAddress = segment.start;
                     const maxReadSize = device.getMaxReadSize(segment.start);
+                    maxUploadSize = maxReadSize
                 }
-            } else {
-                let dfuseFieldsDiv = document.querySelector("#dfuseFields")
-                dfuseFieldsDiv.hidden = true;
             }
+            
+            let firmwarePath = "/CANine.bin";
+
+	    // Download binary file to memory
+            var req = new XMLHttpRequest();
+            req.open('GET', firmwarePath, true);
+    	    req.responseType = "blob";
+            
+	    req.onload = async function(oEvent) {
+
+                let reader = new FileReader();
+                reader.onload = async function() {
+                    firmwareFile = reader.result;
+                    
+                    if (device && firmwareFile != null) {
+                        setLogContext(downloadLog);
+                        clearLog(downloadLog);
+                        try {
+                            let status = await device.getStatus();
+                            if (status.state == dfu.dfuERROR) {
+                                await device.clearStatus();
+                            }
+                        } catch (error) {
+                            device.logWarning("Failed to clear status");
+                        }
+                        await device.do_download(transferSize, firmwareFile, manifestationTolerant).then(
+                            () => {
+                                logInfo("Your device has been updated! Return the boot switch to its normal position and reconnect the device to start using the new firmware.");
+                                setLogContext(null);
+                                if (!manifestationTolerant) {
+                                    device.waitDisconnected(5000).then(
+                                        dev => {
+                                            onDisconnect();
+                                            device = null;
+                                        },
+                                        error => {
+                                            // It didn't reset and disconnect for some reason...
+                                            console.log("Device unexpectedly tolerated manifestation.");
+                                        }
+                                    );
+                                }
+                            },
+                            error => {
+                                logError(error);
+                                setLogContext(null);
+                            }
+                        )
+                    }
+                };
+                reader.readAsArrayBuffer(req.response);
+
+            };
+            req.send();
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             return device;
         }
 
-        connectButton.addEventListener('click', async function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            
-            connectButton.disabled = true;
+        
+        
+        
+        
+        
+        
+        
+        function autoConnect(vid, serial) {
+            dfu.findAllDfuInterfaces().then(
+                async dfu_devices => {
+                    let matching_devices = [];
+                    for (let dfu_device of dfu_devices) {
+                        if (serial) {
+                            if (dfu_device.device_.serialNumber == serial) {
+                                matching_devices.push(dfu_device);
+                            }
+                        } else if (dfu_device.device_.vendorId == vid) {
 
+                            console.log("Found matching VID device: " + vid + " s/n " + dfu_device.device_.serialNumber);
+                            matching_devices.push(dfu_device);
+                        }
+                    }
+
+                    if (matching_devices.length == 0) {
+                        statusDisplay.textContent = 'Please plug in your device in boot mode'; // EMZ suppress this message 'No device found on auto.';
+                    } else {
+                        if (matching_devices.length == 1) {
+                            statusDisplay.textContent = 'Connecting...';
+                            device = matching_devices[0];
+                            console.log(device);
+                            device = await connect(device);
+                        } else {
+                            statusDisplay.textContent = "Device detected";
+                        }
+                        //vidField.value = "0x" + hex4(matching_devices[0].device_.vendorId).toUpperCase();
+                        vid = matching_devices[0].device_.vendorId;
+                    }
+                }
+            );
+        }
+
+        //vidField.addEventListener("change", function() {
+        //    vid = parseInt(vidField.value, 16);
+        //});
+
+        //transferSizeField.addEventListener("change", function() {
+        //    transferSize = parseInt(transferSizeField.value);
+        //});
+
+        //dfuseStartAddressField.addEventListener("change", function(event) {
+        //    const field = event.target;
+        //    let address = parseInt(field.value, 16);
+        //    if (isNaN(address)) {
+        //        field.setCustomValidity("Invalid hexadecimal start address");
+        //    } else if (device && device.memoryInfo) {
+        //        if (device.getSegment(address) !== null) {
+        //            device.startAddress = address;
+        //            field.setCustomValidity("");
+        //            dfuseUploadSizeField.max = device.getMaxReadSize(address);
+        //        } else {
+        //            field.setCustomValidity("Address outside of memory map");
+        //        }
+        //    } else {
+        //        field.setCustomValidity("");
+        //    }
+        //});
+
+        connectButton.addEventListener('click', function() {
             if (device) {
                 device.close().then(onDisconnect);
                 device = null;
@@ -366,30 +531,82 @@ var device = null;
                         let interfaces = dfu.findDeviceDfuInterfaces(selectedDevice);
                         if (interfaces.length == 0) {
                             console.log(selectedDevice);
-                            statusDisplay.textContent = "Incompatible device (No USB DFU interfaces).";
+                            statusDisplay.textContent = "The selected device does not have any USB DFU interfaces.";
                         } else if (interfaces.length == 1) {
                             await fixInterfaceNames(selectedDevice, interfaces);
                             device = await connect(new dfu.Device(selectedDevice, interfaces[0]));
                         } else {
-                            statusDisplay.textContent = "Incompatible device (Multiple USB DFU interfaces).";
+                            await fixInterfaceNames(selectedDevice, interfaces);
+
+                            // Choose the first endpoint (alt=0) which should be flash
+                            device = await connect(new dfu.Device(selectedDevice, interfaces[0]));
+                            /* populateInterfaceList(interfaceForm, selectedDevice, interfaces);
+                            async function connectToSelectedInterface() {
+                                interfaceForm.removeEventListener('submit', this);
+                                const index = interfaceForm.elements["interfaceIndex"].value;
+                                device = await connect(new dfu.Device(selectedDevice, interfaces[index]));
+                            }
+
+                            interfaceForm.addEventListener('submit', connectToSelectedInterface);
+
+                            interfaceDialog.addEventListener('cancel', function () {
+                                interfaceDialog.removeEventListener('cancel', this);
+                                interfaceForm.removeEventListener('submit', connectToSelectedInterface);
+                            });
+
+                            interfaceDialog.showModal(); */
                         }
                     }
                 ).catch(error => {
                     statusDisplay.textContent = error;
                 });
             }
+        });
 
-            await makeRequest('GET', firmwareURL)
-                .then(function (data) {
-                    firmwareFile = data;
-                })
-                .catch(function (err) {
-                    console.error('Augh, there was an error!', err.statusText);
-                });
+/*        detachButton.addEventListener('click', function() {
+            if (device) {
+                device.detach().then(
+                    async len => {
+                        let detached = false;
+                        try {
+                            await device.close();
+                            await device.waitDisconnected(5000);
+                            detached = true;
+                        } catch (err) {
+                            console.log("Detach failed: " + err);
+                        }
 
-            if (device && firmwareFile != null) {
-                setLogContext(downloadLog);
-                clearLog(downloadLog);
+                        onDisconnect();
+                        device = null;
+                        if (detached) {
+                            // Wait a few seconds and try reconnecting
+                            setTimeout(autoConnect, 5000);
+                        }
+                    },
+                    async error => {
+                        await device.close();
+                        onDisconnect(error);
+                        device = null;
+                    }
+                );
+            }
+        });
+	*/
+/*
+        uploadButton.addEventListener('click', async function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (!configForm.checkValidity()) {
+                configForm.reportValidity();
+                return false;
+            }
+
+            if (!device || !device.device_.opened) {
+                onDisconnect();
+                device = null;
+            } else {
+                setLogContext(uploadLog);
+                clearLog(uploadLog);
                 try {
                     let status = await device.getStatus();
                     if (status.state == dfu.dfuERROR) {
@@ -398,39 +615,115 @@ var device = null;
                 } catch (error) {
                     device.logWarning("Failed to clear status");
                 }
-                await device.do_download(transferSize, firmwareFile, manifestationTolerant).then(
-                    () => {
-                        logInfo("Done!");
-                        setLogContext(null);
-                        if (!manifestationTolerant) {
-                            device.waitDisconnected(5000).then(
-                                dev => {
-                                    onDisconnect();
-                                    device = null;
-                                },
-                                error => {
-                                    // It didn't reset and disconnect for some reason...
-                                    console.log("Device unexpectedly tolerated manifestation.");
-                                }
-                            );
-                        }
-                    },
-                    error => {
-                        logError(error);
-                        setLogContext(null);
-                    }
-                )
+
+
+                try {
+                    const blob = await device.do_upload(transferSize, maxUploadSize);
+                    saveAs(blob, "firmware.bin");
+                } catch (error) {
+                    logError(error);
+                }
+
+                setLogContext(null);
             }
 
-            connectButton.disabled = false;
+            return false;
+        });
+*/
+        //firmwareFileField.addEventListener("change", function() {
+        //    firmwareFile = null;
+        //    if (firmwareFileField.files.length > 0) {
+        //        let file = firmwareFileField.files[0];
+        //        let reader = new FileReader();
+        //        reader.onload = function() {
+        //            firmwareFile = reader.result;
+        //        };
+        //        reader.readAsArrayBuffer(file);
+        //    }
+        //});
+
+        /*
+        downloadButton.addEventListener('click', async function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            //if (!configForm.checkValidity()) {
+            //    configForm.reportValidity();
+            //    return false;
+           // }
+            
+
+            let firmwarePath = firmwarePathField.options[firmwarePathField.selectedIndex].value;
+
+	    // Download binary file to memory
+            var req = new XMLHttpRequest();
+            req.open('GET', firmwarePath, true);
+    	    req.responseType = "blob";
+            
+	    req.onload = async function(oEvent) {
+
+                let reader = new FileReader();
+                reader.onload = async function() {
+                    firmwareFile = reader.result;
+                    
+                    if (device && firmwareFile != null) {
+                        setLogContext(downloadLog);
+                        clearLog(downloadLog);
+                        try {
+                            let status = await device.getStatus();
+                            if (status.state == dfu.dfuERROR) {
+                                await device.clearStatus();
+                            }
+                        } catch (error) {
+                            device.logWarning("Failed to clear status");
+                        }
+                        await device.do_download(transferSize, firmwareFile, manifestationTolerant).then(
+                            () => {
+                                logInfo("Your device has been updated! Return the boot jumper to its normal position, if applicable. Unplug/replug the device to start using the new firmware.");
+                                setLogContext(null);
+                                if (!manifestationTolerant) {
+                                    device.waitDisconnected(5000).then(
+                                        dev => {
+                                            onDisconnect();
+                                            device = null;
+                                        },
+                                        error => {
+                                            // It didn't reset and disconnect for some reason...
+                                            console.log("Device unexpectedly tolerated manifestation.");
+                                        }
+                                    );
+                                }
+                            },
+                            error => {
+                                logError(error);
+                                setLogContext(null);
+                            }
+                        )
+                    }
+                };
+                reader.readAsArrayBuffer(req.response);
+
+            };
+            req.send();
+
+            //return false;
         });
 
+    */
+    
         // Check if WebUSB is available
         if (typeof navigator.usb !== 'undefined') {
             navigator.usb.addEventListener("disconnect", onUnexpectedDisconnect);
+            // Try connecting automatically
+            if (fromLandingPage) {
+                //autoConnect(vid, serial);
+                autoConnect(parseInt("0x0483", 16), serial);
+            }
         } else {
-            statusDisplay.textContent = 'WebUSB not available.'
+            statusDisplay.textContent = 'WebUSB not available (you must be running Chrome 61 or later to use this updater)'
             connectButton.disabled = true;
         }
+        
+    
+        
     });
 })();

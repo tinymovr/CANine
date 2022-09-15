@@ -144,17 +144,17 @@ int8_t slcan_parse_str(uint8_t *buf, uint8_t len)
 			return 0;
 		}
 
+		// Transmit data frame command
 		case 'T':
 	    	frame_header.IDE = CAN_ID_EXT;
 		case 't':
-			// Transmit data frame command
 			frame_header.RTR = CAN_RTR_DATA;
 			break;
 
+		// Transmit remote frame command
 		case 'R':
 	    	frame_header.IDE = CAN_ID_EXT;
 		case 'r':
-			// Transmit remote frame command
 			frame_header.RTR = CAN_RTR_REMOTE;
 			break;
 

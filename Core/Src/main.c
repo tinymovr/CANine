@@ -186,6 +186,8 @@ void SystemClock_Config(void)
   * @param None
   * @retval None
   */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-function"
 static void MX_CAN_Init(void)
 {
 
@@ -217,6 +219,7 @@ static void MX_CAN_Init(void)
     /* USER CODE END CAN_Init 2 */
 
 }
+#pragma GCC diagnostic pop
 
 /**
   * @brief GPIO Initialization Function

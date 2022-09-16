@@ -65,9 +65,9 @@
 
 #define USBD_VID     1155
 #define USBD_LANGID_STRING     1033
-#define USBD_MANUFACTURER_STRING     "Tinymovr"
-#define USBD_PID_FS     0xc1b0
-#define USBD_PRODUCT_STRING_FS     "CANine CDC"
+#define USBD_MANUFACTURER_STRING     "Tinymovr" /* CHANGED */
+#define USBD_PID_FS     0xc1b0 /* CHANGED */
+#define USBD_PRODUCT_STRING_FS     "CANine CDC" /* CHANGED */
 #define USBD_CONFIGURATION_STRING_FS     "CDC Config"
 #define USBD_INTERFACE_STRING_FS     "CDC Interface"
 
@@ -151,8 +151,8 @@ __ALIGN_BEGIN uint8_t USBD_FS_DeviceDesc[USB_LEN_DEV_DESC] __ALIGN_END =
   USB_DESC_TYPE_DEVICE,       /*bDescriptorType*/
   0x00,                       /*bcdUSB */
   0x02,
-  0x00,                       /*bDeviceClass*/
-  0x00,                       /*bDeviceSubClass*/
+  0x00,                       /*bDeviceClass*/ /* CHANGED */
+  0x00,                       /*bDeviceSubClass*/ /* CHANGED */
   0x00,                       /*bDeviceProtocol*/
   USB_MAX_EP0_SIZE,           /*bMaxPacketSize*/
   LOBYTE(USBD_VID),           /*idVendor*/

@@ -369,6 +369,8 @@ var device = null;
                     }
                 }
             }
+		
+	    cnsole.log(memorySummary);
             
             // Bind logging methods
             device.logDebug = logDebug;

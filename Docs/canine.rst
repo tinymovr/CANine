@@ -33,50 +33,16 @@ CANine includes a termination resistor to ease the setup of a CAN Bus network. I
 Flashing Firmware
 #################
 
-Your CANine adapter comes pre-flashed with the CANine firmware. As such you do not need to perform flashing to use it together with Tinymovr Studio on Windows, Macos or Ubuntu Linux.
+CANine comes pre-flashed with slcan.
 
-In any case, CANine firmware can be updated using a simple command line tool.
+CANine Firmware
+---------------
 
-1. Ensure your device is not plugged in
-2. Switch the BOOT switch to ON
-3. Plug in the device
-4. Follow the instructions below for your OS
-
-Windows
--------
-
-For windows you will need to install the libusb driver. The easiest way to do this is using the Zadig utility. Download and run the utility and choose the device from the drop-down list. The device should read ST Microelectronics CDC, and should have vendor id 0x0483 and device id 0xdf11. Choose "libusb" as the replacement driver and hit "replace".
-
-Once you have the libusb driver installed, launch `cmd.exe` and type in the command below:
-
-.. code-block:: console
-
-    wget -q https://raw.githubusercontent.com/yconst/CANine/main/flash.bat & flash.bat
+To try the CANine firmware, we offer `a simple Web-based firmware update service <https://tinymovr.github.io/CANine/>`_. Instructions are available on the page. Chrome and Edge are supported.
 
 
-Linux
------
+slcan & CANdlelight Firmware
+----------------------------
 
-A bash script is provided, which you can download and run using the command below:
+CANine is compatible with both slcan as well as candlelight firmware. If you would like to revert to these firmwares, the easiest solution is to use the `canable updater <https://canable.io/updater/>`_. Similarly to the CANine flasher, this updater works directly from within the browser. Chrome and Edge are supported.
 
-.. code-block:: console
-
-    wget -q https://raw.githubusercontent.com/yconst/CANine/main/flash.sh && chmod +x ./flash.sh && sudo ./flash.sh
-
-
-Macos
------
-
-You'll need to have Homebrew installed. Once Homebrew is installed, use the command below:
-
-.. code-block:: console
-
-    wget -q https://raw.githubusercontent.com/yconst/CANine/main/flash_macos.sh && chmod +x ./flash_macos.sh && ./flash_macos.sh
-
-
-slcan & CANdlelight
--------------------
-
-CANine is also compatible with both slcan as well as candlelight firmware. If you would like to revert to these firmwares, the easiest solution is to use the `canable updater <https://canable.io/updater/>`_. It is a DFU updater working directly from within the browser. Chrome and Edge are supported.
-
-With the board powered off, move the BOOT DIP switch to the "ON" position. Connect your board and follow the instruction on the web page to begin the flash procedure.

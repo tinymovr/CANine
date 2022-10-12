@@ -11,8 +11,7 @@ This firmware should be compatible with CANable adapters, but has not been teste
 
 ## Flashing
 
-We now offer simple firmware flashing using Chrome. [Go to the updater](https://tinymovr.github.io/CANine/).
-    
+We now offer [a simple Web-based firmware update service](https://tinymovr.github.io/CANine/). Instructions are available on the page. Chrome and Edge are supported.
 
 ## Using
 

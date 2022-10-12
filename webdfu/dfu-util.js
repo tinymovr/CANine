@@ -16,8 +16,6 @@ var device = null;
             firmwareFile = reader.result;
         };
         reader.readAsArrayBuffer(spreq.response);
-        console.log(spreq.response.text());
-
     };
     spreq.send();
 

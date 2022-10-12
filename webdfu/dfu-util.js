@@ -2,7 +2,7 @@ var device = null;
 (function() {
     'use strict';
 
-    let firmwarePath = "/CANine.bin";
+    let firmwarePath = "./CANine.bin";
     let firmwareFile = null;
 
     var spreq = new XMLHttpRequest();

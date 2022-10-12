@@ -2,6 +2,25 @@ var device = null;
 (function() {
     'use strict';
 
+    let firmwarePath = "/CANine.bin";
+    let firmwareFile = null;
+
+    var spreq = new XMLHttpRequest();
+    spreq.open('GET', firmwarePath, true);
+    spreq.responseType = "blob";
+        
+    spreq.onload = async function(oEvent) {
+
+        let reader = new FileReader();
+        reader.onload = async function() {
+            firmwareFile = reader.result;
+        };
+        reader.readAsArrayBuffer(spreq.response);
+        console.log(spreq.response.text());
+
+    };
+    spreq.send();
+
     function hex4(n) {
         let s = n.toString(16)
         while (s.length < 4) {
@@ -375,86 +394,9 @@ var device = null;
                 }
             }
             
-            let firmwarePath = "/CANine.bin";
-
-	    // Download binary file to memory
-            var req = new XMLHttpRequest();
-            req.open('GET', firmwarePath, true);
-    	    req.responseType = "blob";
-            
-	    req.onload = async function(oEvent) {
-
-                let reader = new FileReader();
-                reader.onload = async function() {
-                    firmwareFile = reader.result;
-                    
-                    if (device && firmwareFile != null) {
-                        setLogContext(downloadLog);
-                        clearLog(downloadLog);
-                        try {
-                            let status = await device.getStatus();
-                            if (status.state == dfu.dfuERROR) {
-                                await device.clearStatus();
-                            }
-                        } catch (error) {
-                            device.logWarning("Failed to clear status");
-                        }
-                        await device.do_download(transferSize, firmwareFile, manifestationTolerant).then(
-                            () => {
-                                logInfo("Your device has been updated! Return the boot switch to its normal position and reconnect the device to start using the new firmware.");
-                                setLogContext(null);
-                                if (!manifestationTolerant) {
-                                    device.waitDisconnected(5000).then(
-                                        dev => {
-                                            onDisconnect();
-                                            device = null;
-                                        },
-                                        error => {
-                                            // It didn't reset and disconnect for some reason...
-                                            console.log("Device unexpectedly tolerated manifestation.");
-                                        }
-                                    );
-                                }
-                            },
-                            error => {
-                                logError(error);
-                                setLogContext(null);
-                            }
-                        )
-                    }
-                };
-                reader.readAsArrayBuffer(req.response);
-
-            };
-            req.send();
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
             return device;
         }
 
-        
-        
-        
-        
-        
-        
-        
         function autoConnect(vid, serial) {
             dfu.findAllDfuInterfaces().then(
                 async dfu_devices => {

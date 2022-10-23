@@ -5,13 +5,13 @@ CANine adapter
 Introduction
 ############
 
-We have adapted the CANable design and created a USB Type-C <-> CAN Bus adapter. To distinguish from the original, we call this adapter CANine. It features DF-13 connectors in addition to 2.54mm header, as well as a convenient DIP switch for setting CAN termination resistor and boot mode.
+This is a USB Type-C <-> CAN Bus adapter. Itself it is an adaptation of the [CANable board](https://canable.io/). It features a 5.08mm screw terminal, a 4-pin JST-GH connector, and a 2.54mm header. In addition, it features a convenient DIP switch for setting CAN termination resistor and boot mode.
 
-It is based on the following hardware:
+CANine includes the following hardware:
 
 * STM32F042C6 MCU
 * MCP2551 CAN Bus Transceiver
-* Dual DF13/2.54mm Pin header CAN interface
+* JST-GH/5.08mm Screw Terminal/2.54mm Pin header CAN interfaces
 * USB Type-C (v2) / micro (v1) interface
 
 This design is Open Source, released under the original CANable license.

@@ -33,13 +33,14 @@ CANine includes a termination resistor to ease the setup of a CAN Bus network. I
 Flashing Firmware
 #################
 
-CANine comes pre-flashed with slcan.
+CANine comes pre-flashed with `slcan <https://python-can.readthedocs.io/en/master/interfaces/slcan.html>`_.
 
 CANine Firmware
 ---------------
 
 To try the CANine firmware, we offer `a simple Web-based firmware update service <https://tinymovr.github.io/CANine/>`_. Instructions are available on the page. Chrome and Edge are supported.
 
+At the moment the CANine firmware is compatible with `python-can <https://github.com/hardbyte/python-can>`_. We created a pull request to include the driver in the main code repo. Until this is resolved, you will need to use the `Tinymovr fork of python-can <https://github.com/tinymovr/python-can>`_. 
 
 slcan & CANdlelight Firmware
 ----------------------------

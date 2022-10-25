@@ -42,6 +42,20 @@ To try the CANine firmware, we offer `a simple Web-based firmware update service
 
 At the moment the CANine firmware is compatible with `python-can <https://github.com/hardbyte/python-can>`_. We created a pull request to include the driver in the main code repo. Until this is resolved, you will need to use the `Tinymovr fork of python-can <https://github.com/tinymovr/python-can>`_. 
 
+Additional Windows Requirements
+*******************************
+
+You will need to install the libusb driver for your CANine. This is most easily done using `Zadig <https://zadig.akeo.ie>`_
+
+Additional Macos Requirements
+*****************************
+
+You will need to install libusb. This can be easily done using `Homebrew <https://brew.sh>`_:
+
+.. code-block:: console
+
+    brew install libusb
+
 slcan & CANdlelight Firmware
 ----------------------------
 

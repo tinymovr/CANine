@@ -40,7 +40,25 @@ CANine Firmware
 
 To try the CANine firmware, we offer `a simple Web-based firmware update service <https://tinymovr.github.io/CANine/>`_. Instructions are available on the page. Chrome and Edge are supported.
 
-At the moment the CANine firmware is compatible with `python-can <https://github.com/hardbyte/python-can>`_. We created a pull request to include the driver in the main code repo. Until this is resolved, you will need to use the `Tinymovr fork of python-can <https://github.com/tinymovr/python-can>`_. 
+Python-Can Compatibility
+************************
+
+At the moment the CANine firmware is compatible with `python-can <https://github.com/hardbyte/python-can>`_. We created a pull request to include the driver in the main python-can branch. Until this is resolved and the code is merged, you will need to use the `Tinymovr fork of python-can <https://github.com/tinymovr/python-can>`_.
+
+You can easily install the python-can Tinymovr fork using `pip`.
+
+First, remove python-can if installed:
+
+.. code-block:: console
+
+    pip uninstall python-can
+
+Then, install from the repo using the following one-liner:
+
+.. code-block:: console
+
+    pip install https://github.com/tinymovr/python-can/archive/canine_develop.zip
+
 
 Additional Windows Requirements
 *******************************

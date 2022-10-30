@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>J:\My Drive\Movr Robotics\Projects\CANine\v2\Kicad\CANine_v2.kicad_sch</source>
+    <date>9/5/2022 6:44:09 μμ</date>
+    <tool>Eeschema (6.0.4)</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>CANine_v2.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="CAP0603-CAP" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b1000fa4-8405-4913-bb2a-3a576510c1f7</tstamps>
+    </comp>
+    <comp ref="C2">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="CAP0603-CAP" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>897c79e5-3d91-4f46-8ead-84d2a2b4a77c</tstamps>
+    </comp>
+    <comp ref="C3">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="CAP0603-CAP" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ec0b3062-fec8-4159-b282-3c3e632ad68c</tstamps>
+    </comp>
+    <comp ref="C4">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="CAP0603-CAP" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2410cb12-10cd-45ed-a4e0-13df7fd75755</tstamps>
+    </comp>
+    <comp ref="C5">
+      <value>4.7uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="CAP0603-CAP" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ce87f310-f0ba-406a-b736-4ce38509611a</tstamps>
+    </comp>
+    <comp ref="C6">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="CAP0603-CAP" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d28e5e59-d0f8-4887-a713-d142448c8207</tstamps>
+    </comp>
+    <comp ref="C7">
+      <value>4.7uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="CAP0603-CAP" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>faac20b9-b485-48a5-b3cc-a28f27addd22</tstamps>
+    </comp>
+    <comp ref="D1">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fec99118-785e-4857-8717-39c1072ed107</tstamps>
+    </comp>
+    <comp ref="D2">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b16ab6df-5dae-4cd5-a4d2-6f60284ce2e8</tstamps>
+    </comp>
+    <comp ref="F1">
+      <value>FUSE_PTC-0805</value>
+      <footprint>PTC0805</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="FUSE_PTC-0805" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>76d5873b-ee9f-4286-852b-3e416f5e58d4</tstamps>
+    </comp>
+    <comp ref="FID1">
+      <value>Fiducial</value>
+      <footprint>Fiducial:Fiducial_0.75mm_Mask1.5mm</footprint>
+      <libsource lib="Mechanical" part="Fiducial" description="Fiducial Marker"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bff59cf0-9a34-4e75-afb3-4439df6aff85</tstamps>
+    </comp>
+    <comp ref="FID2">
+      <value>Fiducial</value>
+      <footprint>Fiducial:Fiducial_0.75mm_Mask1.5mm</footprint>
+      <libsource lib="Mechanical" part="Fiducial" description="Fiducial Marker"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8ca8aec0-c29c-4dda-8317-fb7f86d4b5d9</tstamps>
+    </comp>
+    <comp ref="IC1">
+      <value>STM32F042C6U6</value>
+      <footprint>Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="STM32F042C6U6" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1b2910e6-315c-4be6-b9e1-e1c7b037fc23</tstamps>
+    </comp>
+    <comp ref="J1">
+      <value>SPARKFUN-CONNECTORS_USB_C16PIN</value>
+      <footprint>Movr:SPARKFUN-CONNECTORS_USB-C-16P</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="SPARKFUN-CONNECTORS_USB_C16PIN" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>023b8036-b37e-4e6b-b316-94c2bd8af4ab</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>Conn_01x04_Male</value>
+      <footprint>JST_GH_BM04B-GHS-TBT_1x04-1MP_P1.25mm_Vertical</footprint>
+      <libsource lib="Connector" part="Conn_01x04_Male" description="Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5f974223-54b0-451b-b696-a37f2547db86</tstamps>
+    </comp>
+    <comp ref="J3">
+      <value>Screw_Terminal_01x02</value>
+      <footprint>TerminalBlock:TerminalBlock_bornier-2_P5.08mm</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>246fe101-50b0-4ba5-a3c6-25a50e62a634</tstamps>
+    </comp>
+    <comp ref="JP1">
+      <value>PINHD-1X04_2.54-S</value>
+      <footprint>1X04-S</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="PINHD-1X04_2.54-S" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>378e526d-5a27-490c-9809-30a858151ca1</tstamps>
+    </comp>
+    <comp ref="JP4">
+      <value>M03LOCK</value>
+      <footprint>1X03_LOCK</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="M03LOCK" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3324d408-a5b9-4560-951d-d219dc33ad00</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="RESISTOR0603-RES" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>28c99006-db10-4e32-8623-230b8bc5f422</tstamps>
+    </comp>
+    <comp ref="R2">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="RESISTOR0603-RES" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>be777c60-066a-42c5-a3fc-a93a51cb5f92</tstamps>
+    </comp>
+    <comp ref="R3">
+      <value>RC0603JR-7W120RL</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="RESISTOR0603-RES" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>037de9aa-a34e-4431-8769-841d7d04060a</tstamps>
+    </comp>
+    <comp ref="R4">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="RESISTOR0603-RES" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>30aad354-f659-4962-8ba3-32f351d490c0</tstamps>
+    </comp>
+    <comp ref="R5">
+      <value>5.1k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="R-EU_R0603" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9414e889-e605-4406-8118-efabd53f9003</tstamps>
+    </comp>
+    <comp ref="R6">
+      <value>5.1k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="R-EU_R0603" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0520d68c-bdec-4d10-8756-c63de315da38</tstamps>
+    </comp>
+    <comp ref="S1">
+      <value>218-2LPSTRF</value>
+      <footprint>2182LPSTRF</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="218-2LPSTRF" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>64e4ea00-3ecf-4df6-ac5f-77cf4ced88fb</tstamps>
+    </comp>
+    <comp ref="SJ1">
+      <value>SJ</value>
+      <footprint>SJ</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="SJ" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2fca283b-07ad-4fe4-8cca-34dc149535e1</tstamps>
+    </comp>
+    <comp ref="TP1">
+      <value>TPTP16R</value>
+      <footprint>TP16R</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="TPTP16R" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c3d693bb-8b79-4c4c-8f6d-fcf59053a0c7</tstamps>
+    </comp>
+    <comp ref="TP2">
+      <value>TPTP16R</value>
+      <footprint>TP16R</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="TPTP16R" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>efca2809-2036-46b8-8545-a5bdd08b5301</tstamps>
+    </comp>
+    <comp ref="U2">
+      <value>AP2202K-3.3TRG1</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="MIC52053.3V" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cfdd684c-0d04-48e4-a62a-4b899d9ad32f</tstamps>
+    </comp>
+    <comp ref="U3">
+      <value>MCP2551</value>
+      <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
+      <libsource lib="CANine_v2-eagle-import" part="MCP2551" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CANine_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4cc8f330-0552-463d-8506-7fc2c95c4de2</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="CANine_v2-eagle-import" part="218-2LPSTRF">
+      <fields>
+        <field name="Reference">S</field>
+        <field name="Value">218-2LPSTRF</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="bidirectional"/>
+        <pin num="2" name="2" type="bidirectional"/>
+        <pin num="3" name="3" type="bidirectional"/>
+        <pin num="4" name="4" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANine_v2-eagle-import" part="CAP0603-CAP">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">CAP0603-CAP</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANine_v2-eagle-import" part="FUSE_PTC-0805">
+      <fields>
+        <field name="Reference">F</field>
+        <field name="Value">FUSE_PTC-0805</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANine_v2-eagle-import" part="M03LOCK">
+      <fields>
+        <field name="Reference">JP</field>
+        <field name="Value">M03LOCK</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANine_v2-eagle-import" part="MCP2551">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP2551</field>
+      </fields>
+      <pins>
+        <pin num="1" name="TXD" type="bidirectional"/>
+        <pin num="2" name="VSS" type="bidirectional"/>
+        <pin num="3" name="VDD" type="bidirectional"/>
+        <pin num="4" name="RXD" type="bidirectional"/>
+        <pin num="5" name="VREF" type="bidirectional"/>
+        <pin num="6" name="CANL" type="bidirectional"/>
+        <pin num="7" name="CANH" type="bidirectional"/>
+        <pin num="8" name="RS" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANine_v2-eagle-import" part="MIC52053.3V">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MIC52053.3V</field>
+      </fields>
+      <pins>
+        <pin num="1" name="IN" type="input"/>
+        <pin num="2" name="GND" type="input"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="BP" type="input"/>
+        <pin num="5" name="OUT" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANine_v2-eagle-import" part="PINHD-1X04_2.54-S">
+      <fields>
+        <field name="Reference">JP</field>
+        <field name="Value">PINHD-1X04_2.54-S</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANine_v2-eagle-import" part="R-EU_R0603">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R-EU_R0603</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANine_v2-eagle-import" part="RESISTOR0603-RES">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">RESISTOR0603-RES</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANine_v2-eagle-import" part="SJ">
+      <fields>
+        <field name="Reference">SJ</field>
+        <field name="Value">SJ</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANine_v2-eagle-import" part="SPARKFUN-CONNECTORS_USB_C16PIN">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">SPARKFUN-CONNECTORS_USB_C16PIN</field>
+      </fields>
+      <pins>
+        <pin num="A5" name="CC1" type="bidirectional"/>
+        <pin num="A6" name="D+" type="bidirectional"/>
+        <pin num="A7" name="D-" type="bidirectional"/>
+        <pin num="B5" name="CC2" type="bidirectional"/>
+        <pin num="B6" name="D+" type="bidirectional"/>
+        <pin num="B7" name="D-" type="bidirectional"/>
+        <pin num="GND" name="GND" type="bidirectional"/>
+        <pin num="GND2" name="GND" type="bidirectional"/>
+        <pin num="SHLD1" name="SHLD" type="bidirectional"/>
+        <pin num="SHLD2" name="SHLD" type="bidirectional"/>
+        <pin num="SHLD3" name="SHLD" type="bidirectional"/>
+        <pin num="SHLD4" name="SHLD" type="bidirectional"/>
+        <pin num="SHLD5" name="SHLD" type="bidirectional"/>
+        <pin num="SHLD6" name="SHLD" type="bidirectional"/>
+        <pin num="SHLD7" name="SHLD" type="bidirectional"/>
+        <pin num="SHLD8" name="SHLD" type="bidirectional"/>
+        <pin num="VBUS1" name="VBUS" type="bidirectional"/>
+        <pin num="VBUS2" name="VBUS" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANine_v2-eagle-import" part="STM32F042C6U6">
+      <fields>
+        <field name="Reference">IC</field>
+        <field name="Value">STM32F042C6U6</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VBAT" type="bidirectional"/>
+        <pin num="2" name="PC13" type="bidirectional"/>
+        <pin num="3" name="PC14-_OSC32_IN" type="bidirectional"/>
+        <pin num="4" name="PC15-OSC_OUT" type="bidirectional"/>
+        <pin num="5" name="PF0-OSC_IN" type="bidirectional"/>
+        <pin num="6" name="PF1-OSC_OUT" type="bidirectional"/>
+        <pin num="7" name="NRST" type="bidirectional"/>
+        <pin num="8" name="VSSA" type="bidirectional"/>
+        <pin num="9" name="VDDA" type="bidirectional"/>
+        <pin num="10" name="PA0" type="bidirectional"/>
+        <pin num="11" name="PA1" type="bidirectional"/>
+        <pin num="12" name="PA2" type="bidirectional"/>
+        <pin num="13" name="PA3" type="bidirectional"/>
+        <pin num="14" name="PA4" type="bidirectional"/>
+        <pin num="15" name="PA5" type="bidirectional"/>
+        <pin num="16" name="PA6" type="bidirectional"/>
+        <pin num="17" name="PA7" type="bidirectional"/>
+        <pin num="18" name="PB0" type="bidirectional"/>
+        <pin num="19" name="PB1" type="bidirectional"/>
+        <pin num="20" name="PB2" type="bidirectional"/>
+        <pin num="21" name="PB10" type="bidirectional"/>
+        <pin num="22" name="PB11" type="bidirectional"/>
+        <pin num="23" name="VSS_1" type="bidirectional"/>
+        <pin num="24" name="VDD_1" type="bidirectional"/>
+        <pin num="25" name="PB12" type="bidirectional"/>
+        <pin num="26" name="PB13" type="bidirectional"/>
+        <pin num="27" name="PB14" type="bidirectional"/>
+        <pin num="28" name="PB15" type="bidirectional"/>
+        <pin num="29" name="PA8" type="bidirectional"/>
+        <pin num="30" name="PA9" type="bidirectional"/>
+        <pin num="31" name="PA10" type="bidirectional"/>
+        <pin num="32" name="PA11" type="bidirectional"/>
+        <pin num="33" name="PA12" type="bidirectional"/>
+        <pin num="34" name="PA13" type="bidirectional"/>
+        <pin num="35" name="VSS_2" type="bidirectional"/>
+        <pin num="36" name="VDDIO2" type="bidirectional"/>
+        <pin num="37" name="PA14" type="bidirectional"/>
+        <pin num="38" name="PA15" type="bidirectional"/>
+        <pin num="39" name="PB3" type="bidirectional"/>
+        <pin num="40" name="PB4" type="bidirectional"/>
+        <pin num="41" name="PB5" type="bidirectional"/>
+        <pin num="42" name="PB6" type="bidirectional"/>
+        <pin num="43" name="PB7" type="bidirectional"/>
+        <pin num="44" name="PF11-BOOT0" type="bidirectional"/>
+        <pin num="45" name="PB8" type="bidirectional"/>
+        <pin num="46" name="PB9" type="bidirectional"/>
+        <pin num="47" name="VSS_3" type="bidirectional"/>
+        <pin num="48" name="VDD_2" type="bidirectional"/>
+        <pin num="49" name="EP" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANine_v2-eagle-import" part="TPTP16R">
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TPTP16R</field>
+      </fields>
+      <pins>
+        <pin num="TP" name="TP" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_01x04_Male">
+      <description>Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x04_Male</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Screw_Terminal_01x02">
+      <description>Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>TerminalBlock*:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Screw_Terminal_01x02</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="LED">
+      <description>Light emitting diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Mechanical" part="Fiducial">
+      <description>Fiducial Marker</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Fiducial*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">FID</field>
+        <field name="Value">Fiducial</field>
+        <field name="Datasheet">~</field>
+      </fields>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="CANine_v2-eagle-import">
+      <uri>J:\My Drive\Movr Robotics\Projects\CANine\v2\Kicad/CANine_v2-eagle-import.kicad_sym</uri>
+    </library>
+    <library logical="Connector">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Connector.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Device.kicad_sym</uri>
+    </library>
+    <library logical="Mechanical">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Mechanical.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/BOOT0">
+      <node ref="IC1" pin="44" pinfunction="PF11-BOOT0" pintype="bidirectional"/>
+      <node ref="R4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="S1" pin="3" pinfunction="3" pintype="bidirectional"/>
+    </net>
+    <net code="2" name="/CANH">
+      <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J3" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="JP4" pin="3" pinfunction="3" pintype="passive"/>
+      <node ref="R3" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="TP1" pin="TP" pinfunction="TP" pintype="input"/>
+      <node ref="U3" pin="7" pinfunction="CANH" pintype="bidirectional"/>
+    </net>
+    <net code="3" name="/CANL">
+      <node ref="J2" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="J3" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="JP4" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="S1" pin="4" pinfunction="4" pintype="bidirectional"/>
+      <node ref="TP2" pin="TP" pinfunction="TP" pintype="input"/>
+      <node ref="U3" pin="6" pinfunction="CANL" pintype="bidirectional"/>
+    </net>
+    <net code="4" name="/CAN_RX">
+      <node ref="IC1" pin="45" pinfunction="PB8" pintype="bidirectional"/>
+      <node ref="U3" pin="4" pinfunction="RXD" pintype="bidirectional"/>
+    </net>
+    <net code="5" name="/CAN_TX">
+      <node ref="IC1" pin="46" pinfunction="PB9" pintype="bidirectional"/>
+      <node ref="U3" pin="1" pinfunction="TXD" pintype="bidirectional"/>
+    </net>
+    <net code="6" name="/D+">
+      <node ref="IC1" pin="33" pinfunction="PA12" pintype="bidirectional"/>
+      <node ref="J1" pin="A6" pinfunction="D+" pintype="bidirectional"/>
+      <node ref="J1" pin="B6" pinfunction="D+" pintype="bidirectional"/>
+    </net>
+    <net code="7" name="/D-">
+      <node ref="IC1" pin="32" pinfunction="PA11" pintype="bidirectional"/>
+      <node ref="J1" pin="A7" pinfunction="D-" pintype="bidirectional"/>
+      <node ref="J1" pin="B7" pinfunction="D-" pintype="bidirectional"/>
+    </net>
+    <net code="8" name="/LED_RX">
+      <node ref="IC1" pin="19" pinfunction="PB1" pintype="bidirectional"/>
+      <node ref="R1" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="9" name="/LED_TX">
+      <node ref="IC1" pin="18" pinfunction="PB0" pintype="bidirectional"/>
+      <node ref="R2" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="10" name="/SWCLK">
+      <node ref="IC1" pin="37" pinfunction="PA14" pintype="bidirectional"/>
+      <node ref="JP1" pin="3" pinfunction="3" pintype="passive"/>
+    </net>
+    <net code="11" name="/SWDIO">
+      <node ref="IC1" pin="34" pinfunction="PA13" pintype="bidirectional"/>
+      <node ref="JP1" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="12" name="/VBUS_USB">
+      <node ref="F1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="J1" pin="VBUS1" pinfunction="VBUS" pintype="bidirectional"/>
+      <node ref="J1" pin="VBUS2" pinfunction="VBUS" pintype="bidirectional"/>
+    </net>
+    <net code="13" name="3.3V">
+      <node ref="C1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="C2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="C4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="C6" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="C7" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="IC1" pin="1" pinfunction="VBAT" pintype="bidirectional"/>
+      <node ref="IC1" pin="24" pinfunction="VDD_1" pintype="bidirectional"/>
+      <node ref="IC1" pin="36" pinfunction="VDDIO2" pintype="bidirectional"/>
+      <node ref="IC1" pin="48" pinfunction="VDD_2" pintype="bidirectional"/>
+      <node ref="IC1" pin="9" pinfunction="VDDA" pintype="bidirectional"/>
+      <node ref="JP1" pin="4" pinfunction="4" pintype="passive"/>
+      <node ref="S1" pin="2" pinfunction="2" pintype="bidirectional"/>
+      <node ref="U2" pin="5" pinfunction="OUT" pintype="passive"/>
+    </net>
+    <net code="14" name="GND">
+      <node ref="C1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="C2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="C3" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="C4" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="C5" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="C6" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="C7" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D2" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="IC1" pin="23" pinfunction="VSS_1" pintype="bidirectional"/>
+      <node ref="IC1" pin="35" pinfunction="VSS_2" pintype="bidirectional"/>
+      <node ref="IC1" pin="47" pinfunction="VSS_3" pintype="bidirectional"/>
+      <node ref="IC1" pin="49" pinfunction="EP" pintype="bidirectional"/>
+      <node ref="IC1" pin="8" pinfunction="VSSA" pintype="bidirectional"/>
+      <node ref="J1" pin="GND" pinfunction="GND" pintype="bidirectional"/>
+      <node ref="J1" pin="GND2" pinfunction="GND" pintype="bidirectional"/>
+      <node ref="J2" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="JP1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="JP4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="R4" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R5" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="R6" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="2" pinfunction="GND" pintype="input"/>
+      <node ref="U3" pin="2" pinfunction="VSS" pintype="bidirectional"/>
+      <node ref="U3" pin="8" pinfunction="RS" pintype="bidirectional"/>
+    </net>
+    <net code="15" name="Net-(D1-Pad2)">
+      <node ref="D1" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R2" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="16" name="Net-(D2-Pad2)">
+      <node ref="D2" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R1" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="17" name="Net-(J1-PadA5)">
+      <node ref="J1" pin="A5" pinfunction="CC1" pintype="bidirectional"/>
+      <node ref="R6" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="18" name="Net-(J1-PadB5)">
+      <node ref="J1" pin="B5" pinfunction="CC2" pintype="bidirectional"/>
+      <node ref="R5" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="19" name="Net-(J1-PadSHLD1)">
+      <node ref="J1" pin="SHLD1" pinfunction="SHLD" pintype="bidirectional"/>
+      <node ref="J1" pin="SHLD2" pinfunction="SHLD" pintype="bidirectional"/>
+      <node ref="J1" pin="SHLD3" pinfunction="SHLD" pintype="bidirectional"/>
+      <node ref="J1" pin="SHLD4" pinfunction="SHLD" pintype="bidirectional"/>
+      <node ref="J1" pin="SHLD5" pinfunction="SHLD" pintype="bidirectional"/>
+      <node ref="J1" pin="SHLD6" pinfunction="SHLD" pintype="bidirectional"/>
+      <node ref="J1" pin="SHLD7" pinfunction="SHLD" pintype="bidirectional"/>
+      <node ref="J1" pin="SHLD8" pinfunction="SHLD" pintype="bidirectional"/>
+    </net>
+    <net code="20" name="Net-(J2-Pad1)">
+      <node ref="J2" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="SJ1" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="21" name="Net-(R3-Pad2)">
+      <node ref="R3" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="S1" pin="1" pinfunction="1" pintype="bidirectional"/>
+    </net>
+    <net code="22" name="V_BATT">
+      <node ref="C3" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="C5" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="F1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="SJ1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="1" pinfunction="IN" pintype="input"/>
+      <node ref="U2" pin="3" pinfunction="EN" pintype="input"/>
+      <node ref="U3" pin="3" pinfunction="VDD" pintype="bidirectional"/>
+    </net>
+    <net code="23" name="unconnected-(IC1-Pad2)">
+      <node ref="IC1" pin="2" pinfunction="PC13" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="24" name="unconnected-(IC1-Pad3)">
+      <node ref="IC1" pin="3" pinfunction="PC14-_OSC32_IN" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="25" name="unconnected-(IC1-Pad4)">
+      <node ref="IC1" pin="4" pinfunction="PC15-OSC_OUT" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="26" name="unconnected-(IC1-Pad5)">
+      <node ref="IC1" pin="5" pinfunction="PF0-OSC_IN" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="27" name="unconnected-(IC1-Pad6)">
+      <node ref="IC1" pin="6" pinfunction="PF1-OSC_OUT" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="28" name="unconnected-(IC1-Pad7)">
+      <node ref="IC1" pin="7" pinfunction="NRST" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="29" name="unconnected-(IC1-Pad10)">
+      <node ref="IC1" pin="10" pinfunction="PA0" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="30" name="unconnected-(IC1-Pad11)">
+      <node ref="IC1" pin="11" pinfunction="PA1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="31" name="unconnected-(IC1-Pad12)">
+      <node ref="IC1" pin="12" pinfunction="PA2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="32" name="unconnected-(IC1-Pad13)">
+      <node ref="IC1" pin="13" pinfunction="PA3" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="33" name="unconnected-(IC1-Pad14)">
+      <node ref="IC1" pin="14" pinfunction="PA4" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="34" name="unconnected-(IC1-Pad15)">
+      <node ref="IC1" pin="15" pinfunction="PA5" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="35" name="unconnected-(IC1-Pad16)">
+      <node ref="IC1" pin="16" pinfunction="PA6" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="36" name="unconnected-(IC1-Pad17)">
+      <node ref="IC1" pin="17" pinfunction="PA7" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="37" name="unconnected-(IC1-Pad20)">
+      <node ref="IC1" pin="20" pinfunction="PB2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="38" name="unconnected-(IC1-Pad21)">
+      <node ref="IC1" pin="21" pinfunction="PB10" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="39" name="unconnected-(IC1-Pad22)">
+      <node ref="IC1" pin="22" pinfunction="PB11" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="40" name="unconnected-(IC1-Pad25)">
+      <node ref="IC1" pin="25" pinfunction="PB12" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="41" name="unconnected-(IC1-Pad26)">
+      <node ref="IC1" pin="26" pinfunction="PB13" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="42" name="unconnected-(IC1-Pad27)">
+      <node ref="IC1" pin="27" pinfunction="PB14" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="43" name="unconnected-(IC1-Pad28)">
+      <node ref="IC1" pin="28" pinfunction="PB15" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="44" name="unconnected-(IC1-Pad29)">
+      <node ref="IC1" pin="29" pinfunction="PA8" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="45" name="unconnected-(IC1-Pad30)">
+      <node ref="IC1" pin="30" pinfunction="PA9" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="46" name="unconnected-(IC1-Pad31)">
+      <node ref="IC1" pin="31" pinfunction="PA10" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="47" name="unconnected-(IC1-Pad38)">
+      <node ref="IC1" pin="38" pinfunction="PA15" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="48" name="unconnected-(IC1-Pad39)">
+      <node ref="IC1" pin="39" pinfunction="PB3" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="49" name="unconnected-(IC1-Pad40)">
+      <node ref="IC1" pin="40" pinfunction="PB4" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="50" name="unconnected-(IC1-Pad41)">
+      <node ref="IC1" pin="41" pinfunction="PB5" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="51" name="unconnected-(IC1-Pad42)">
+      <node ref="IC1" pin="42" pinfunction="PB6" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="52" name="unconnected-(IC1-Pad43)">
+      <node ref="IC1" pin="43" pinfunction="PB7" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="53" name="unconnected-(U2-Pad4)">
+      <node ref="U2" pin="4" pinfunction="BP" pintype="input+no_connect"/>
+    </net>
+    <net code="54" name="unconnected-(U3-Pad5)">
+      <node ref="U3" pin="5" pinfunction="VREF" pintype="bidirectional+no_connect"/>
+    </net>
+  </nets>
+</export>

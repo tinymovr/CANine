@@ -57,8 +57,7 @@ Then, install from the repo using the following one-liner:
 
 .. code-block:: console
 
-    pip install https://github.com/tinymovr/python-can/archive/canine_develop.zip
-
+    pip install "python-can[canine] @ https://github.com/tinymovr/python-can/archive/canine_develop.zip"
 
 Additional Windows Requirements
 *******************************

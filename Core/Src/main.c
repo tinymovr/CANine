@@ -23,6 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "stdbool.h"
 #include "stm32f0xx.h"
 #include "stm32f0xx_hal.h"
 
@@ -107,6 +108,8 @@ int main(void)
     CAN_RxHeaderTypeDef rx_msg_header;
     uint8_t rx_msg_data[8] = {0};
     uint8_t msg_buf[SLCAN_MTU];
+    uint16_t msg_len = 0;
+    bool msg_in_buf = false;
 
     /* USER CODE END 2 */
 
@@ -118,21 +121,29 @@ int main(void)
         led_process();
         can_process();
 
-        // If CAN message receive is pending, process the message
-        if(is_can_msg_pending(CAN_RX_FIFO0))
+        // If no message in buffer and CAN message rcv
+        // is pending, process the message
+        if(!msg_in_buf && is_can_msg_pending(CAN_RX_FIFO0))
         {
             // If message received from bus, parse the frame
             if (can_rx(&rx_msg_header, rx_msg_data) == HAL_OK)
             {
-                uint16_t msg_len = slcan_parse_frame((uint8_t *)&msg_buf, &rx_msg_header, rx_msg_data);
-
-                // Transmit message via USB-CDC
+                msg_len = slcan_parse_frame((uint8_t *)&msg_buf, &rx_msg_header, rx_msg_data);
                 if(msg_len)
                 {
-                    CDC_Transmit_FS(msg_buf, msg_len);
+                	msg_in_buf = true;
                 }
             }
         }
+        // If there is a CAN message in buffer,
+        // transmit message via USB-CDC
+		if (msg_in_buf)
+		{
+			if (CDC_Transmit_FS(msg_buf, msg_len) == USBD_OK)
+			{
+				msg_in_buf = false;
+			}
+		}
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */

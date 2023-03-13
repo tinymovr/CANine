@@ -214,7 +214,7 @@ uint32_t can_tx(CAN_TxHeaderTypeDef *tx_msg_header, uint8_t* tx_msg_data)
 
 
 // Process messages in the TX output queue
-void can_process(void)
+void can_tx_process(void)
 {
     if((txqueue.tail != txqueue.head) && (HAL_CAN_GetTxMailboxesFreeLevel(&can_handle) > 0))
 	{

@@ -119,7 +119,7 @@ int main(void)
     {
         cdc_process();
         led_process();
-        can_process();
+        can_tx_process();
 
         // If no message in buffer and CAN message rcv
         // is pending, process the message

@@ -46,7 +46,7 @@ uint32_t can_tx(CAN_TxHeaderTypeDef *tx_msg_header, uint8_t *tx_msg_data);
 uint32_t can_rx(CAN_RxHeaderTypeDef *rx_msg_header, uint8_t *rx_msg_data);
 
 
-void can_process(void);
+void can_tx_process(void);
 
 uint8_t is_can_msg_pending(uint8_t fifo);
 CAN_HandleTypeDef* can_gethandle(void);

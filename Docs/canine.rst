@@ -55,6 +55,7 @@ To use with Tinymovr Studio, add the command line parameter `--bus=canine` when 
 In your scripts, use the CANine interface through a simple import:
 
 .. code-block:: python
+
     import can
     from canine import CANineBus
     

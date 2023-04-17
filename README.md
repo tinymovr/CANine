@@ -3,8 +3,6 @@
 
 USB CDC firmware for the CANine USB⟷CAN Bus adapter. This firmware is based on slcan but gets rid of the Virtual Com Port cruft, resulting in leaner communication on all platforms, and especially on Windows. Most slcan commands are the same, but the CAN frame size is fixed and data is transmitted as binary (instead of ascii in slcan).
 
-This firmware is currently supported by [Tinymovr Studio](https://pypi.org/project/tinymovr/) v0.3.x and above.
-
 This firmware should be compatible with CANable adapters, but has not been tested.
 
 [Documentation](https://canine.readthedocs.io/en/latest/)
@@ -15,6 +13,6 @@ We now offer [a simple Web-based firmware update service](https://tinymovr.githu
 
 ## Using
 
-Currently this firmware is supported by our [fork of the python-can library](https://github.com/tinymovr/python-can) (the `canine_develop` branch). It's not yet tested on Linux (Windows and Macos works), but it should work without an issue. 
+This firmware is compatible with python-can through the corresponding [plugin available on PyPi](https://pypi.org/project/python-can-canine/).
 
-You can set `--bustype=canine` for Tinymovr studio to use this protocol.
+This firmware is compatible with Tinymovr. To use with Studio, add the command line parameter `--bus=canine` when launching.

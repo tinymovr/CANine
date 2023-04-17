@@ -43,21 +43,24 @@ To try the CANine firmware, we offer `a simple Web-based firmware update service
 Python-Can Compatibility
 ************************
 
-At the moment the CANine firmware is compatible with `python-can <https://github.com/hardbyte/python-can>`_. We created a pull request to include the driver in the main python-can branch. Until this is resolved and the code is merged, you will need to use the `Tinymovr fork of python-can <https://github.com/tinymovr/python-can>`_.
-
-You can easily install the python-can Tinymovr fork using `pip`.
-
-First, remove python-can if installed:
+We offer a `python-can plugin available on PyPi <https://pypi.org/project/python-can-canine>`_, which allows use of CANine with python-can. The plugin is easily installable via pypi:
 
 .. code-block:: console
 
-    pip uninstall python-can
+    pip install python-can-canine
 
-Then, install from the repo using the following one-liner:
 
-.. code-block:: console
+To use with Tinymovr Studio, add the command line parameter `--bus=canine` when launching.
 
-    pip install "python-can[canine] @ https://github.com/tinymovr/python-can/archive/canine_develop.zip"
+In your scripts, use the CANine interface through a simple import:
+
+.. code-block:: python
+
+    import can
+    from canine import CANineBus
+    
+    bus = can.Bus(interface="canine", bitrate=1000000)
+
 
 Additional Windows Requirements
 *******************************

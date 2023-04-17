@@ -73,6 +73,12 @@ You will need to install libusb. This can be easily done using `Homebrew <https:
 
     brew install libusb
 
+In ARM-based Macs you may also need to link the homebrew library install path to the fallback path `/lib`. This can be done with the following command:
+
+.. code-block:: console
+
+    ln -s /opt/homebrew/lib ~/lib
+
 slcan & CANdlelight Firmware
 ----------------------------
 

@@ -35,6 +35,11 @@ Flashing Firmware
 
 CANine comes pre-flashed with `slcan <https://python-can.readthedocs.io/en/master/interfaces/slcan.html>`_.
 
+Hardware Preparation
+--------------------
+
+Unplug the CANine adapter from USB. Flip the DFU switch to the ON position. Plug the adapter back into USB. The device will appear as a ST DFU Device, and allow firmware flashing. Once firmware flashing is complete, unplug the device and return the switch to the OFF position.
+
 CANine Firmware
 ---------------
 

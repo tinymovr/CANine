@@ -87,6 +87,19 @@ In ARM-based Macs you may also need to link the homebrew library install path to
 
     ln -s /opt/homebrew/lib ~/lib
 
+
+Additional Linux requirements
+*****************************
+
+You will need to add udev rules for CANine:
+
+.. code-block:: console
+
+    sudo bash -c 'echo -e "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"0483\", ATTR{idProduct}==\"c1b0\", MODE=\"0666\", SYMLINK+=\"canine_usb\"" > /etc/udev/rules.d/11-canine.rules'
+    sudo udevadm control --reload-rules && sudo udevadm trigger
+
+To have the rules loaded at every boot, add the command to your `.bashrc`.
+
 slcan & CANdlelight Firmware
 ----------------------------
 

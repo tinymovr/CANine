@@ -1,5 +1,13 @@
 
-# CANine firmware
+# CANine Schematics, Drawings and Firmware
+
+## Schematics and Drawings
+
+CANine is Certified Open Source Hardware
+
+[OSHW] GR000007 | Certified open source hardware | oshwa.org/cert
+
+## Firmware
 
 USB CDC firmware for the CANine USB⟷CAN Bus adapter. This firmware is based on slcan but gets rid of the Virtual Com Port cruft, resulting in leaner communication on all platforms, and especially on Windows. Most slcan commands are the same, but the CAN frame size is fixed and data is transmitted as binary (instead of ascii in slcan).
 
@@ -7,11 +15,11 @@ This firmware should be compatible with CANable adapters, but has not been teste
 
 [Documentation](https://canine.readthedocs.io/en/latest/)
 
-## Flashing
+### Flashing
 
 We now offer [a simple Web-based firmware update service](https://tinymovr.github.io/CANine/). Instructions are available on the page. Chrome and Edge are supported.
 
-## Using
+### Using
 
 This firmware is compatible with python-can through the corresponding [plugin available on PyPi](https://pypi.org/project/python-can-canine/).
 

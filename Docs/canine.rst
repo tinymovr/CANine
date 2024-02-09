@@ -25,6 +25,9 @@ Hardware Configuration
   :alt: CANine hardware configuration diagram
   :figclass: align-center
 
+.. warning::
+   * Do not change the position of the DIP switches while the adapter is powered. First remove power, perform your change, and power back on.
+
 CAN Termination Resistor
 ------------------------
 

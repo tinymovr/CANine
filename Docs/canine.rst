@@ -110,7 +110,7 @@ CANine is compatible with both slcan as well as candlelight firmware. If you wou
 
 
 3D Printed Case Assembly
-************************
+########################
 
 .. figure:: case_explode.png
   :width: 800

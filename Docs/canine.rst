@@ -108,3 +108,12 @@ slcan & CANdlelight Firmware
 
 CANine is compatible with both slcan as well as candlelight firmware. If you would like to revert to these firmwares, the easiest solution is to use the `canable updater <https://canable.io/updater/>`_. Similarly to the CANine flasher, this updater works directly from within the browser. Chrome and Edge are supported.
 
+
+3D Printed Case Assembly
+************************
+
+.. figure:: case_explode.png
+  :width: 800
+  :align: center
+  :alt: CANine 3D Printed Case
+  :figclass: align-center
